@@ -38,6 +38,9 @@
 	font-size: 0;
 	display: block;
 }
+.spoiler:not(.show) img {
+	display: none
+}
 .spoiler.show {
 	font-family: monospace, Monaco;
 	white-space: normal;
