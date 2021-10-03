@@ -8,7 +8,16 @@
 `!!spoiler!!` => `<span class="spoiler">spoiler</span>`
 
 ## Installation
-`$ npm i @traptitech/markdown-it-spoiler`
+`$ npm i @traptitech/markdown-it-spoiler --save`
+
+## Include
+`var md = require('markdown-it')({
+  multiline:  1,
+  breaks: 		1, 
+})
+.use(require('@traptitech/markdown-it-spoiler'))`
+
+
 
 ## `frontPriorMode`(default: `false`)
 ### when `false`
@@ -20,3 +29,40 @@
 
 `!!!spolier!!` => `<span class="spoiler">!spoiler</span>`
 `!!spolier!!!` => `<span class="spoiler">spoiler</span>!`
+
+### Styles
+
+```
+.spoiler:not(.show) {
+	position: relative;
+	font-size: 0;
+	display: block;
+}
+.spoiler.show {
+	font-family: monospace, Monaco;
+	white-space: normal;
+	font-size: 14px;
+	background-color: #f5f5f5;
+}
+
+.spoiler:not(.show)::after {
+	background: #ecf0f1;
+	content: "Show spoiler";
+	padding: 1px 5px;
+	color: #a19c9c;
+	border-radius: 3px;
+	cursor: pointer;
+	width: 92px;
+	height: 20px;
+	display: block;
+	font-size: 14px;
+	white-space: nowrap;
+}
+```
+## Jquery
+```
+$('body').on('click','span.spoiler', function(e) {
+  $(this).addClass('show')
+})
+```
+
